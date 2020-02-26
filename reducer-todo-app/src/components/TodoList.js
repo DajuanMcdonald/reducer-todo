@@ -21,6 +21,10 @@ const TodoList = () => {
         dispatch({ type: "ADD_TODO", payload: todoItem });
     }
 
+    const clearTodoItem = e => {
+        dispatch({ type: "CLEAR_COMPLETE", payload: ''})
+    }
+
     return (
         <React.Fragment>
             <div className="container-form"> 
@@ -35,12 +39,12 @@ const TodoList = () => {
 
                 <Button onClick={addTodoItem}>Add Todo</Button>
 
-                <Button>Clear completed</Button>
+                <Button onClick={clearTodoItem}>Clear completed</Button>
 
             </div>
 
             <p>
-                {state.todo}
+                {state.item}
             </p>
         </React.Fragment>
 

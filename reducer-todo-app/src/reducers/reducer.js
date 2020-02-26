@@ -7,7 +7,10 @@ export const initialState = {
 export const simpleReducer = (state, action) => {
     switch (action.type) {
         case "ADD_TODO":
-            return {...state, todo: action.payload};
+            return {...state, item: action.payload};
+
+        case "CLEAR_COMPLETE":
+            return {...state, item: action.completed}
 
         default:
             return state;
