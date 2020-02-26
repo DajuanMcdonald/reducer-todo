@@ -17,12 +17,19 @@ const TodoList = () => {
         
     }
 
-    const addTodoItem = ev => {
+    const addTodoItem = () => {
         dispatch({ type: "ADD_TODO", payload: todoItem });
     }
 
-    const clearTodoItem = e => {
-        dispatch({ type: "CLEAR_COMPLETE", payload: ''})
+    const clearTodoItem = () => {
+        dispatch({ type: "CLEAR_COMPLETE", payload: '' })
+    }
+
+    const toggleComplete = e => {
+        dispatch({ 
+            type: "TOGGLE_COMPLETE", 
+            payload: console.log('completed')
+        })
     }
 
     return (
@@ -43,9 +50,9 @@ const TodoList = () => {
 
             </div>
 
-            <p>
+            <h3 onClick={toggleComplete} key={state.id}>
                 {state.item}
-            </p>
+            </h3>
         </React.Fragment>
 
 
