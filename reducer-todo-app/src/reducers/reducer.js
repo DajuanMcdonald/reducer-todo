@@ -5,6 +5,11 @@ export const initialState = {
 }
 
 export const simpleReducer = (state, action) => {
-    
-        return state;
+    switch (action.type) {
+        case "ADD_TODO":
+            return {...state, todo: action.payload};
+
+        default:
+            return state;
+    };
 }
