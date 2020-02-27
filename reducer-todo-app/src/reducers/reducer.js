@@ -25,7 +25,11 @@ export default function simpleReducer(state, action) {
 
         case "delete":
             return {
-                todos: state.todos.filter((t, idx) => console.log( t, idx, 'deleted'))
+                todos: state.todos.filter((t, idx) => 
+                   
+                    idx === action.idx ? {...t, completed: t.completed} : !t.completed
+                )
+                
             }
         default:
             return state;
