@@ -12,14 +12,14 @@ function TodoList() {
     return (
         <React.Fragment>
             <h1>Todo App</h1>
-            <div>
+            <div className="container">
                 <Form
                     onSubmit={e => {
                         e.preventDefault();
                         dispatch({ type: "add", todo });
                         setTodo('');
                     }}
-                >
+                > Add Todo
                     <Input
                         type='text'
                         value={todo}
@@ -40,6 +40,7 @@ function TodoList() {
             {/* Step 3: Build a function that let's you mark todo items as completed when you click on them */}
             {todos.map((t, idx) => (<div
                 className={t.completed ? 'completed' : ''}
+                label="completed"
                 key={idx}
                 onClick={() =>
                     dispatch({

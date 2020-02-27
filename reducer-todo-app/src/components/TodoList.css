@@ -21,4 +21,9 @@ Form {
     text-decoration: line-through;
     border: 1px solid;
     width: 50vw;
+    background-color: red;
+}
+
+.container {
+    background-color: darkslategray;
 }
