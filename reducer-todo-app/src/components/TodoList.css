@@ -5,3 +5,20 @@
     line-height: 40px;
   
 }
+
+Button {
+    color: red;
+    background-color: darkgrey;
+    width: 90px;
+    margin: 5%;
+}
+
+Form {
+    background-color: darkorange;
+}
+
+.completed {
+    text-decoration: line-through;
+    border: 1px solid;
+    width: 50vw;
+}

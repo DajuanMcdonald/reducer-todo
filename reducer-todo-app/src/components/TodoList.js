@@ -1,6 +1,6 @@
 import React, { useReducer, useState } from 'react';
-import simpleReducer, {initialState} from '../reducers/reducer';
-import {Button, Form, Input} from 'reactstrap';
+import simpleReducer from '../reducers/reducer';
+import { Button, Form, Input } from 'reactstrap';
 
 import '../components/TodoList.css';
 
@@ -35,12 +35,14 @@ function TodoList() {
       </pre> */}
 
             {todos.map((t, idx) => (<div
-                className="todoItems-list"
+                className={t.completed ? 'completed' : ''}
                 key={idx}
-                onClick={() => dispatch({ type: 'toggle', idx, action: console.log(t.todo, !t.completed) })}
-                style={{
-                    textDecoration: t.completed ? 'line-through' : ''
-                }}
+                onClick={() =>
+                    dispatch({
+                        type: 'toggle', idx,
+                        action: console.log(t.todo, 'completed?', !t.completed)
+                    })
+                }
 
             >
                 {t.todo}
