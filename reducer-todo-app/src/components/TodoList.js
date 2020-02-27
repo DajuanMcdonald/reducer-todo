@@ -1,71 +1,50 @@
-import React, { useState, useReducer } from 'react';
-import { Input, Button } from 'reactstrap';
-import '../components/TodoList.css'
+import React, { useReducer, useState } from 'react';
+import simpleReducer from '../reducers/reducer';
+import {Button, Form, Input} from 'reactstrap';
 
-// Set up state in this component
-import { initialState, simpleReducer } from '../reducers/reducer';
-
-const TodoList = () => {
-
-    const [todoItem, setTodoItem] = useState('');
-
-    const [state, dispatch] = useReducer(simpleReducer, initialState)
-
-    console.log(state)
-
-    const handleChanges = ev => {
-        setTodoItem(ev.target.value);
-        ev.preventDefault();
-
-    }
-
-    // Step 3 - Adding todos
-    const addTodoItem = (e) => {
-        e.preventDefault();
-
-        dispatch({ type: "ADD_TODO", payload: todoItem });
-    }
-
-    // Step 5 - Clearing completed todos
-    const clearTodoItem = () => {
-        dispatch({ type: "CLEAR_COMPLETE", payload: state.item = '' })
-    }
-
-    // Step 4 - Toggle the completed field
-    const toggleComplete = () => {
-        dispatch({
-            type: "TOGGLE_COMPLETE",
-            payload: console.log('completed'),
-
-        })
-    }
+function TodoList() {
+    const [todo, setTodo] = useState('');
+    const [{ todos }, dispatch] = useReducer(simpleReducer, { todos: [] });
 
     return (
         <React.Fragment>
-            <div className="container-form">
-                <Input
-                    type="text"
-                    onChange={handleChanges}
-                    name="todoList"
-                    value={todoItem}
-
+            <h1>Todo App</h1>
+            <div>
+                <Form
+                    onSubmit={e => {
+                        e.preventDefault();
+                        dispatch({ type: "add", todo });
+                        setTodo('');
+                    }}
                 >
-                </Input>
-
-                <Button onClick={addTodoItem}>Add Todo</Button>
-
-                <Button onClick={clearTodoItem}>Clear completed</Button>
-
+                    <Input
+                        type='text'
+                        value={todo}
+                        onChange={e => setTodo(e.target.value)}
+                    >
+                    </Input>
+                </Form>
+                <Button onClick={() => dispatch({ type: 'add', todo, action: setTodo('') })}>Add</Button>
+                <Button onClick={() => dispatch({ type: 'delete', todo })}>Remove</Button>
             </div>
 
-            <h3 onClick={toggleComplete} key={state.id}>
-                {state.item}
-            </h3>
+            {/* <pre onClick={() => dispatch({ completed: true})}>
+      {JSON.stringify(todos, null, 2)}
+      </pre> */}
+
+            {todos.map((t, idx) => (<div
+                key={t.todo}
+                onClick={() => dispatch({ type: 'toggle', idx })}
+                style={{
+                    textDecoration: t.completed ? 'line-through' : ''
+                }}
+
+            >
+                {t.todo}
+            </div>))}
+
         </React.Fragment>
-
-
-
-    )
+    );
 }
 
 export default TodoList;
