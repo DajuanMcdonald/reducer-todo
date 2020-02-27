@@ -1,14 +1,14 @@
-// export const initialState = {
+export const initialState = {
 
-//     todoItems: [
+    todoItems: [
 
-//         {
-//             item: 'Learn about reducers',
-//             completed: false,
-//             id: 3892987589
-//         }
-//     ]
-// }
+        {
+            item: 'Learn about reducers',
+            completed: false,
+            id: 3892987589
+        }
+    ]
+}
 
 
 export default function simpleReducer(state, action) {

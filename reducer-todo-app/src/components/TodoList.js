@@ -1,10 +1,10 @@
 import React, { useReducer, useState } from 'react';
-import simpleReducer from '../reducers/reducer';
+import simpleReducer, {initialState} from '../reducers/reducer';
 import {Button, Form, Input} from 'reactstrap';
 
 function TodoList() {
     const [todo, setTodo] = useState('');
-    const [{ todos }, dispatch] = useReducer(simpleReducer, { todos: [] });
+    const [{ todos }, dispatch] = useReducer(simpleReducer, { todos: [initialState] });
 
     return (
         <React.Fragment>
@@ -33,8 +33,8 @@ function TodoList() {
       </pre> */}
 
             {todos.map((t, idx) => (<div
-                key={t.todo}
-                onClick={() => dispatch({ type: 'toggle', idx })}
+                key={idx}
+                onClick={() => dispatch({ type: 'toggle', idx, action: console.log(t.todo, t.completed) })}
                 style={{
                     textDecoration: t.completed ? 'line-through' : ''
                 }}
