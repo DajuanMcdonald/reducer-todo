@@ -1,6 +1,6 @@
 import React, { useReducer, useState } from 'react';
 import simpleReducer from '../reducers/reducer';
-import { Button, Form, Input } from 'reactstrap';
+import { Button, TextField, Input, FormControl } from '@material-ui/core';
 
 import '../components/TodoList.css';
 
@@ -11,36 +11,36 @@ function TodoList() {
 
     return (
         <React.Fragment>
-            <h1>Todo App</h1>
-            <div className="container">
-                <Form
+            <div className="App">
+                <h1>Todo App</h1>
+                <FormControl
                     onSubmit={e => {
                         e.preventDefault();
                         dispatch({ type: "add", todo });
                         setTodo('');
                     }}
-                > Add Todo
-                    <Input
-                        type='text'
-                        value={todo}
-                        onChange={e => setTodo(e.target.value)}
-                    >
-                    </Input>
-                </Form>
+                > 
+                    <TextField id='filled-basic' type="text" label='Add Todo' onChange={e => setTodo(e.target.value)}/>
+                    
+                </FormControl>
                 {/* Step 2: Add a form that dispatches an "ADD_TODO" action to be able to add a todo item to your list */}
-                <Button onClick={() => dispatch({ type: 'add', todo, action: setTodo('') })}>Add</Button>
+                <Button variant="contained" color="primary" onClick={() => dispatch({ type: 'add', todo, action: setTodo('') })}>ADD</Button>
                 {/* Step 4: Build a function that let's you clear completed todos when you click on a "Clear Completed" button */}
-                <Button onClick={() => dispatch({ type: 'delete', todo })}>Remove</Button>
+                <Button variant="contained" color="secondary" onClick={() => dispatch({ type: 'delete', todo })}>DELETE</Button>
             </div>
 
-            {/* <pre onClick={() => dispatch({ completed: true})}>
-      {JSON.stringify(todos, null, 2)}
-      </pre> */}
+                {/* <pre onClick={() => dispatch({ completed: true})}>
+                {JSON.stringify(todos, null, 2)}
+                </pre> */}
+
+            <div id="block">
+
+
 
             {/* Step 3: Build a function that let's you mark todo items as completed when you click on them */}
             {todos.map((t, idx) => (<div
-                className={t.completed ? 'completed' : ''}
-                label="completed"
+                className={t.completed ? 'completed' : 'incomplete'}
+                
                 key={idx}
                 onClick={() =>
                     dispatch({
@@ -49,9 +49,9 @@ function TodoList() {
                     })
                 }
 
-            >
-                {t.todo}
-            </div>))}
+            >{t.todo}</div>))}
+      </div>
+
 
         </React.Fragment>
     );

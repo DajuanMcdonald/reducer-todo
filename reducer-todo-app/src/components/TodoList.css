@@ -1,14 +1,8 @@
-.todoItems-list {
-    border: 1px solid;
-    width: 50vw;
-    margin: 5%;
-    line-height: 40px;
-  
-}
+
 
 Button {
     color: red;
-    background-color: darkgrey;
+    /* background-color: darkgrey; */
     width: 90px;
     margin: 5%;
 }
@@ -20,10 +14,34 @@ Form {
 .completed {
     text-decoration: line-through;
     border: 1px solid;
-    width: 50vw;
+     width: 33.55%;
     background-color: red;
+    display: flex;
+    align-items: flex-end;   
+
+}
+
+.incomplete {
+    border: 3px solid;
+    width: 33.55%;
+    background-color: forestgreen;
+    
+    margin: 2%;
+    display: flex;
+    align-items: flex-start;
+    
+  
+  
 }
 
 .container {
     background-color: darkslategray;
+}
+
+#block {
+    background-color: lightgray;
+    display: flex;
+    flex-direction: column;
+    
+    border: 1px dashed;
 }
