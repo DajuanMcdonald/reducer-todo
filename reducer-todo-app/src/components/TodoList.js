@@ -1,5 +1,5 @@
 import React, { useReducer, useState } from 'react';
-import simpleReducer from '../reducers/reducer';
+import {simpleReducer, initialState} from '../reducers/reducer';
 import { Button, TextField, Input, FormControl } from '@material-ui/core';
 
 import '../components/TodoList.css';
@@ -7,7 +7,7 @@ import '../components/TodoList.css';
 // Step 1: Set an initial state value through a reducer and render a list of todos from that state
 function TodoList() {
     const [todo, setTodo] = useState('');
-    const [{ todos }, dispatch] = useReducer(simpleReducer, { todos: [] });
+    const [state, dispatch] = useReducer(simpleReducer, initialState);
 
     return (
         <React.Fragment>
@@ -38,7 +38,7 @@ function TodoList() {
 
 
             {/* Step 3: Build a function that let's you mark todo items as completed when you click on them */}
-            {todos.map((t, idx) => (<div
+            {state.todos.map((t, idx) => (<div
                 className={t.completed ? 'completed' : 'incomplete'}
                 
                 key={idx}
