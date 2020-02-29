@@ -20,7 +20,7 @@ export function simpleReducer(state = initialState, action) {
 
         case "toggle":
             return {
-                todos: state.todos.map((t, id) => id === action.id ? {...t, completed: !t.completed} : t)
+                todos: state.todos.map((t, idx) => idx === action.idx ? {...t, completed: !t.completed} : t)
             }
 
         case "delete":
