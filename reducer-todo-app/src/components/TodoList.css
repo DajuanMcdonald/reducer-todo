@@ -1,0 +1,47 @@
+
+
+Button {
+    color: red;
+    /* background-color: darkgrey; */
+    width: 90px;
+    margin: 5%;
+}
+
+Form {
+    background-color: darkorange;
+}
+
+.completed {
+    text-decoration: line-through;
+    border: 1px solid;
+     width: 33.55%;
+    background-color: red;
+    display: flex;
+    align-items: flex-end;   
+
+}
+
+.incomplete {
+    border: 3px solid;
+    width: 33.55%;
+    background-color: forestgreen;
+    
+    margin: 2%;
+    display: flex;
+    align-items: flex-start;
+    
+  
+  
+}
+
+.container {
+    background-color: darkslategray;
+}
+
+#block {
+    background-color: lightgray;
+    display: flex;
+    flex-direction: column;
+    
+    border: 1px dashed;
+}
